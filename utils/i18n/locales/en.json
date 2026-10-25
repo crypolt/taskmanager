@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "code": "en",
+    "label": "EN",
+    "dateLocale": "en-US",
+    "dir": "ltr",
+    "order": 20,
+    "base": false
+  },
+  "context": {
+    "entry": {
+      "humanNote": "Human note",
+      "plan": "Plan"
+    }
+  },
+  "error": {
+    "badRequest": "bad request",
+    "budgetExhausted": "token budget exhausted ({budget})",
+    "contextRequired": "task context is required",
+    "emptyChain": "empty model chain",
+    "endpointNotFound": "endpoint not found",
+    "internal": "internal error",
+    "invalidJson": "invalid JSON body",
+    "invalidRoute": "invalid model route",
+    "mcpConfig": "failed to save the MCP configuration",
+    "mcpNameRequired": "MCP server name is required",
+    "mcpNotFound": "MCP server not found",
+    "methodNotAllowed": "method not allowed",
+    "noModelForRole": "no model configured for role {role}",
+    "planEmpty": "the plan has no subtasks",
+    "planFailed": "failed to build the plan",
+    "roleModelRequired": "role and model are required",
+    "routeNotFound": "that model is not in this role chain",
+    "taskMoveStatus": "cannot move a task to status \"{status}\"",
+    "taskNotFound": "task not found",
+    "titleRequired": "task title is required",
+    "unknownPipeline": "unknown pipeline {pipeline}",
+    "verification": "verification failed"
+  },
+  "pipeline": {
+    "dev": {
+      "name": "Development stages",
+      "about": "Fixed pipeline: analysis → design → implementation → tests → review → documentation"
+    },
+    "free": {
+      "name": "Free task",
+      "about": "The planner splits the task into subtasks and assigns roles"
+    },
+    "single": {
+      "name": "Single task",
+      "about": "No decomposition: one agent does the whole task"
+    }
+  },
+  "stage": {
+    "analyze": "Analysis",
+    "design": "Design",
+    "implement": "Implementation",
+    "test": "Tests",
+    "review": "Review",
+    "docs": "Documentation",
+    "plan": "Planning",
+    "generic": "Subtask"
+  },
+  "static": {
+    "brand": "taskflow",
+    "uiNotBuilt": {
+      "title": "UI is not built",
+      "body": "Build the frontend:",
+      "api": "The API is available at {path}."
+    }
+  },
+  "task": {
+    "accepted": "task accepted",
+    "acceptedPipeline": "task accepted, pipeline: {pipeline}",
+    "acceptedPlanner": "task accepted, the planner will split it into subtasks",
+    "cancelled": "cancelled by the user",
+    "cancelledParent": "cancelled together with the parent",
+    "moved": "status changed manually: {status}",
+    "retried": "re-run requested by the user",
+    "answered": "human answer received, continuing",
+    "stagesDone": "all stages finished, assembling the result",
+    "needsHuman": "human input required: {cause} (attempts {attempts})",
+    "retryFailed": "attempt {attempt}/{total} failed: {reason}",
+    "dependencyMissing": "dependency {dependency} not found",
+    "stageFailed": "stage \"{stage}\" finished with status {status}",
+    "stageNeedsHuman": "stage \"{stage}\" requires a human",
+    "stageTitle": "{stage}: {title}",
+    "stageError": "error: {reason}",
+    "planReady": "plan ready: {count} subtasks",
+    "planFallback": " (the planner returned an invalid plan, a single subtask was used)",
+    "planCreated": "plan with {count} subtasks created",
+    "executing": "executor: {model} ({provider})",
+    "executionDone": "executor finished, starting verification",
+    "verdictPass": "accepted, score {score}/100",
+    "verified": "model {model}, verdict {score}/100",
+    "verdictRejected": "the verifier rejected the result",
+    "reviewRejected": "the verifier rejected the result ({score}/100): {issues}",
+    "aggregated": "pipeline finished",
+    "aggregatedBy": "result assembled by model {model}",
+    "aggregatedNoModel": "result assembled without a model (aggregator unavailable)",
+    "aggregatedFallback": "pipeline finished, the result was glued from stage outputs",
+    "stagesPending": "waiting for stages: {done}/{total} done",
+    "resumed": "resumed: unfinished stages re-queued",
+    "state": {
+      "pending": "queued",
+      "planning": "planning",
+      "blocked": "waiting for stages",
+      "running": "running",
+      "verifying": "verifying",
+      "retrying": "retrying",
+      "needs_human": "needs human",
+      "done": "done",
+      "failed": "failed",
+      "cancelled": "cancelled"
+    }
+  }
+}

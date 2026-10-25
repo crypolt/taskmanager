@@ -1,0 +1,246 @@
+{
+  "_meta": {
+    "code": "en",
+    "label": "EN",
+    "dateLocale": "en-US",
+    "dir": "ltr",
+    "order": 20,
+    "base": false
+  },
+  "app": {
+    "title": "Task Manager — agent pipeline",
+    "brandStart": "task",
+    "brandEnd": "flow"
+  },
+  "nav": {
+    "board": "Board",
+    "models": "Models",
+    "mcp": "MCP"
+  },
+  "status": {
+    "pending": "queued",
+    "planning": "planning",
+    "blocked": "waiting for stages",
+    "running": "running",
+    "verifying": "verifying",
+    "retrying": "retrying",
+    "needsHuman": "needs human",
+    "done": "done",
+    "failed": "failed",
+    "cancelled": "cancelled"
+  },
+  "column": {
+    "todo": "Queue",
+    "running": "In progress",
+    "verifying": "Verification",
+    "blocked": "Waiting",
+    "human": "Needs human",
+    "done": "Done",
+    "failed": "Failed / cancelled",
+    "empty": "empty"
+  },
+  "stats": {
+    "total": "total",
+    "running": "running",
+    "done": "done",
+    "errors": "errors",
+    "human": "human",
+    "tokens": "tokens",
+    "cost": "cost"
+  },
+  "action": {
+    "newTask": "+ Task",
+    "newPlan": "+ Task plan",
+    "back": "Back",
+    "cancel": "Cancel",
+    "create": "Create",
+    "close": "Close",
+    "retry": "Run again",
+    "hide": "hide",
+    "continue": "Continue",
+    "save": "Save",
+    "saving": "…"
+  },
+  "sse": {
+    "on": "SSE connected",
+    "off": "SSE offline"
+  },
+  "modal": {
+    "title": "New task"
+  },
+  "board": {
+    "onlyRoots": "Root tasks only",
+    "showStages": "Show stages",
+    "loading": "loading…",
+    "searchPlaceholder": "Search tasks…",
+    "eta": "ETA {time}",
+    "tasks": {
+      "one": "{count} task",
+      "few": "{count} tasks",
+      "many": "{count} tasks",
+      "other": "{count} tasks"
+    }
+  },
+  "field": {
+    "title": "Title",
+    "titlePlaceholder": "For example: add CSV export of tasks",
+    "description": "Description",
+    "descriptionPlaceholder": "What to do, context, definition of done",
+    "pipeline": "Pipeline",
+    "model": "Model (optional)",
+    "modelPlaceholder": "provider:model or leave empty",
+    "priority": "Priority",
+    "attempts": "Attempts per stage",
+    "budget": "Token budget"
+  },
+  "hint": {
+    "pipelineFallback": "Choose a pipeline.",
+    "budget": "A budget of 0 means no limit."
+  },
+  "plan": {
+    "title": "Create a task plan",
+    "context": "Task context",
+    "contextPlaceholder": "Describe what to do: goal, constraints, definition of done",
+    "name": "Plan title (optional)",
+    "namePlaceholder": "For example: export tasks to CSV",
+    "hint": "The planner splits the context into subtasks — edit them before creating tasks.",
+    "generate": "Generate plan",
+    "generating": "Generating…",
+    "generated": "Plan by {model}",
+    "subtask": "Subtask {index}",
+    "role": "Role",
+    "subtaskTitle": "Title",
+    "subtaskDescription": "Description",
+    "addSubtask": "+ Subtask",
+    "remove": "Remove",
+    "createTasks": "Create tasks ({count})",
+    "creating": "Creating…",
+    "empty": "The plan is empty — add a subtask.",
+    "contextRequired": "Task context is required",
+    "scope": "Scope (files/dirs)",
+    "scopePlaceholder": "internal/foo, web/src/bar"
+  },
+  "role": {
+    "analyze": "Analysis",
+    "design": "Design",
+    "implement": "Implementation",
+    "test": "Tests",
+    "review": "Review",
+    "docs": "Documentation",
+    "generic": "Generic"
+  },
+  "drawer": {
+    "task": "Task",
+    "role": "Role",
+    "priority": "Priority",
+    "attempts": "Attempts",
+    "tokens": "Tokens",
+    "cost": "Cost",
+    "created": "Created",
+    "started": "Started",
+    "finished": "Finished",
+    "model": "Model",
+    "stages": "Pipeline stages",
+    "human": "Human decision",
+    "humanPlaceholder": "What to clarify or how to proceed — this goes into the executor prompt",
+    "result": "Result",
+    "attemptsTitle": "Attempts ({count})",
+    "agent": "Agent",
+    "price": "Cost",
+    "time": "Time",
+    "prompt": "Prompt",
+    "response": "Response",
+    "log": "Log",
+    "noAttempts": "No attempts yet",
+    "noEvents": "No events",
+    "noOutput": "No output",
+    "modelWorking": "The model is still working — the attempt appears once it answers",
+    "showPrompt": "Show prompt",
+    "hidePrompt": "Hide prompt",
+    "running": "running",
+    "attemptRunning": "The model request is in flight…",
+    "cache": "cache",
+    "contextTitle": "Context",
+    "contextEmpty": "No entries",
+    "contextKind": {
+      "plan": "Plan",
+      "result": "Result",
+      "note": "Note"
+    }
+  },
+  "models": {
+    "about": "Model chain per role: attempt 1 uses the first model, the next one is used on failure (escalation).",
+    "addEntry": "Add model",
+    "cache": "Cache (read)",
+    "cacheNote": "Input/output tokens exclude cache: an agent re-sends its context every step and the provider reports that part as cache.read.",
+    "calls": "Calls",
+    "chainCount": "{count} links",
+    "dailyTokens": "Daily token limit",
+    "edit": "Edit route",
+    "latency": "Avg time",
+    "model": "Model",
+    "position": "Position {position}",
+    "price": "Price in / out (per 1M)",
+    "priceIn": "In price /1M",
+    "priceOut": "Out price /1M",
+    "provider": "Provider",
+    "providers": "Providers: {providers}.",
+    "quota": "today: {used} of {limit}",
+    "quotaUnlimited": "today: {used} (no limit)",
+    "refresh": "Refresh",
+    "refusedAt": "at {time}",
+    "removeRoute": "Remove",
+    "role": "Role",
+    "share": "Share",
+    "statusError": "provider refused",
+    "statusOk": "available",
+    "tokensIn": "Input",
+    "tokensOut": "Output",
+    "tokensTotal": "Total tokens",
+    "total": "Last 24h total: {tokens} tokens, {cost}",
+    "usage": "Model usage (last 24h)",
+    "usageEmpty": "No model calls yet"
+  },
+  "mcp": {
+    "about": "MCP servers from the opencode config: enablement, command and environment. Changes apply to agent runs immediately.",
+    "path": "Config: {path}",
+    "empty": "No MCP servers configured",
+    "name": "Name",
+    "namePlaceholder": "for example: filesystem",
+    "type": "Type",
+    "typeLocal": "local",
+    "typeRemote": "remote",
+    "enabled": "Enabled",
+    "command": "Command (one argument per line)",
+    "commandPlaceholder": "/usr/local/bin/my-mcp\n--flag",
+    "url": "URL",
+    "env": "Environment",
+    "envKey": "Key",
+    "envValue": "Value",
+    "addEnv": "+ Variable",
+    "add": "+ Add MCP",
+    "create": "Create",
+    "save": "Save",
+    "delete": "Delete",
+    "secret": "Secret is hidden — leave as is to keep it",
+    "maskedHint": "Secret values are hidden. Leave {mask} to keep the stored value."
+  },
+  "format": {
+    "ms": "{value} ms",
+    "sec": "{value} s",
+    "min": "{min}m {sec}s",
+    "tokens": {
+      "k": "k",
+      "m": "M"
+    },
+    "currency": "$"
+  },
+  "validation": {
+    "titleRequired": "task title is required"
+  },
+  "clientError": {
+    "network": "network error",
+    "timeout": "request timed out",
+    "httpStatus": "HTTP {status}"
+  }
+}

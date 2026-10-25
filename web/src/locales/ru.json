@@ -1,0 +1,246 @@
+{
+  "_meta": {
+    "code": "ru",
+    "label": "RU",
+    "dateLocale": "ru-RU",
+    "dir": "ltr",
+    "order": 10,
+    "base": true
+  },
+  "app": {
+    "title": "Task Manager — конвейер агентов",
+    "brandStart": "task",
+    "brandEnd": "flow"
+  },
+  "nav": {
+    "board": "Доска",
+    "models": "Модели",
+    "mcp": "MCP"
+  },
+  "status": {
+    "pending": "в очереди",
+    "planning": "планирование",
+    "blocked": "ожидает этапы",
+    "running": "выполняется",
+    "verifying": "проверка",
+    "retrying": "повтор",
+    "needsHuman": "нужен человек",
+    "done": "готово",
+    "failed": "ошибка",
+    "cancelled": "отменено"
+  },
+  "column": {
+    "todo": "Очередь",
+    "running": "В работе",
+    "verifying": "Проверка",
+    "blocked": "Ожидание",
+    "human": "Нужен человек",
+    "done": "Готово",
+    "failed": "Провал / отмена",
+    "empty": "пусто"
+  },
+  "stats": {
+    "total": "всего",
+    "running": "в работе",
+    "done": "готово",
+    "errors": "ошибки",
+    "human": "человек",
+    "tokens": "токены",
+    "cost": "стоимость"
+  },
+  "action": {
+    "newTask": "+ Задача",
+    "newPlan": "+ План задач",
+    "back": "Назад",
+    "cancel": "Отмена",
+    "create": "Создать",
+    "close": "Закрыть",
+    "retry": "Запустить снова",
+    "hide": "скрыть",
+    "continue": "Продолжить",
+    "save": "Сохранить",
+    "saving": "…"
+  },
+  "sse": {
+    "on": "SSE подключено",
+    "off": "SSE нет"
+  },
+  "modal": {
+    "title": "Новая задача"
+  },
+  "board": {
+    "onlyRoots": "Только корневые",
+    "showStages": "Показать этапы",
+    "loading": "загрузка…",
+    "searchPlaceholder": "Поиск задач…",
+    "eta": "ETA {time}",
+    "tasks": {
+      "one": "{count} задача",
+      "few": "{count} задачи",
+      "many": "{count} задач",
+      "other": "{count} задач"
+    }
+  },
+  "field": {
+    "title": "Название",
+    "titlePlaceholder": "Например: добавить экспорт задач в CSV",
+    "description": "Описание",
+    "descriptionPlaceholder": "Что нужно сделать, контекст, критерии готовности",
+    "pipeline": "Конвейер",
+    "model": "Модель (необязательно)",
+    "modelPlaceholder": "provider:model или оставьте пустым",
+    "priority": "Приоритет",
+    "attempts": "Попыток на этап",
+    "budget": "Бюджет токенов"
+  },
+  "hint": {
+    "pipelineFallback": "Выберите конвейер.",
+    "budget": "Бюджет 0 — без ограничения."
+  },
+  "plan": {
+    "title": "Создать план задач",
+    "context": "Контекст задачи",
+    "contextPlaceholder": "Опишите, что нужно сделать: цель, ограничения, критерии готовности",
+    "name": "Название плана (необязательно)",
+    "namePlaceholder": "Например: экспорт задач в CSV",
+    "hint": "Планировщик разложит контекст на подзадачи — их можно поправить перед созданием.",
+    "generate": "Сгенерировать план",
+    "generating": "Строю план…",
+    "generated": "План от {model}",
+    "subtask": "Подзадача {index}",
+    "role": "Роль",
+    "subtaskTitle": "Название",
+    "subtaskDescription": "Описание",
+    "addSubtask": "+ Подзадача",
+    "remove": "Удалить",
+    "createTasks": "Создать задачи ({count})",
+    "creating": "Создаю задачи…",
+    "empty": "План пуст — добавьте подзадачу.",
+    "contextRequired": "Опишите контекст задачи",
+    "scope": "Область (файлы/папки)",
+    "scopePlaceholder": "internal/foo, web/src/bar"
+  },
+  "role": {
+    "analyze": "Анализ",
+    "design": "Дизайн",
+    "implement": "Реализация",
+    "test": "Тесты",
+    "review": "Ревью",
+    "docs": "Документация",
+    "generic": "Универсальная"
+  },
+  "drawer": {
+    "task": "Задача",
+    "role": "Роль",
+    "priority": "Приоритет",
+    "attempts": "Попытки",
+    "tokens": "Токены",
+    "cost": "Стоимость",
+    "created": "Создана",
+    "started": "Старт",
+    "finished": "Финиш",
+    "model": "Модель",
+    "stages": "Этапы конвейера",
+    "human": "Решение человека",
+    "humanPlaceholder": "Что уточнить или как действовать дальше — попадёт в промпт исполнителя",
+    "result": "Результат",
+    "attemptsTitle": "Попытки ({count})",
+    "agent": "Агент",
+    "price": "Цена",
+    "time": "Время",
+    "prompt": "Промпт",
+    "response": "Ответ",
+    "log": "Журнал",
+    "noAttempts": "Попыток ещё не было",
+    "noEvents": "Событий нет",
+    "noOutput": "Ответа нет",
+    "modelWorking": "Модель ещё работает — попытка появится после ответа",
+    "showPrompt": "Показать промпт",
+    "hidePrompt": "Скрыть промпт",
+    "running": "выполняется",
+    "attemptRunning": "Запрос к модели выполняется…",
+    "cache": "кеш",
+    "contextTitle": "Контекст",
+    "contextEmpty": "Записей нет",
+    "contextKind": {
+      "plan": "План",
+      "result": "Результат",
+      "note": "Заметка"
+    }
+  },
+  "models": {
+    "about": "Цепочка моделей на роль: попытка 1 использует первую модель, при провале — следующую (эскалация).",
+    "addEntry": "Добавить модель",
+    "cache": "Кеш (чтение)",
+    "cacheNote": "Токены входа/выхода считаются без кеша: агент на каждом шаге переотправляет контекст, и провайдер отдаёт его как cache.read.",
+    "calls": "Вызовы",
+    "chainCount": "{count} звеньев",
+    "dailyTokens": "Лимит токенов/сутки",
+    "edit": "Изменить маршрут",
+    "latency": "Ср. время",
+    "model": "Модель",
+    "position": "Позиция {position}",
+    "price": "Цена in / out (за 1M)",
+    "priceIn": "Цена вх./1M",
+    "priceOut": "Цена вых./1M",
+    "provider": "Провайдер",
+    "providers": "Провайдеры: {providers}.",
+    "quota": "за сутки: {used} из {limit}",
+    "quotaUnlimited": "за сутки: {used} (без лимита)",
+    "refresh": "Обновить",
+    "refusedAt": "в {time}",
+    "removeRoute": "Удалить",
+    "role": "Роль",
+    "share": "Доля",
+    "statusError": "отказ провайдера",
+    "statusOk": "доступна",
+    "tokensIn": "Вход",
+    "tokensOut": "Выход",
+    "tokensTotal": "Всего токенов",
+    "total": "Итого за сутки: {tokens} токенов, {cost}",
+    "usage": "Использование моделей за сутки",
+    "usageEmpty": "Модели ещё не вызывались"
+  },
+  "mcp": {
+    "about": "MCP-серверы из конфигурации opencode: включение, команда и переменные окружения. Изменения сразу применяются к запускам агентов.",
+    "path": "Конфиг: {path}",
+    "empty": "MCP-серверы не настроены",
+    "name": "Имя",
+    "namePlaceholder": "например: filesystem",
+    "type": "Тип",
+    "typeLocal": "локальный",
+    "typeRemote": "удалённый",
+    "enabled": "Включён",
+    "command": "Команда (по одному аргументу в строке)",
+    "commandPlaceholder": "/usr/local/bin/my-mcp\n--flag",
+    "url": "URL",
+    "env": "Переменные окружения",
+    "envKey": "Ключ",
+    "envValue": "Значение",
+    "addEnv": "+ Переменная",
+    "add": "+ Добавить MCP",
+    "create": "Создать",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "secret": "Секрет скрыт — оставьте как есть, чтобы не менять",
+    "maskedHint": "Секретные значения скрыты. Оставьте {mask}, чтобы сохранить текущее."
+  },
+  "format": {
+    "ms": "{value} мс",
+    "sec": "{value} с",
+    "min": "{min}м {sec}с",
+    "tokens": {
+      "k": "k",
+      "m": "M"
+    },
+    "currency": "$"
+  },
+  "validation": {
+    "titleRequired": "укажите название задачи"
+  },
+  "clientError": {
+    "network": "ошибка сети",
+    "timeout": "превышено время ожидания ответа",
+    "httpStatus": "HTTP {status}"
+  }
+}

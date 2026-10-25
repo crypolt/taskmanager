@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "code": "ru",
+    "label": "RU",
+    "dateLocale": "ru-RU",
+    "dir": "ltr",
+    "order": 10,
+    "base": true
+  },
+  "context": {
+    "entry": {
+      "humanNote": "Заметка человека",
+      "plan": "План"
+    }
+  },
+  "error": {
+    "badRequest": "некорректный запрос",
+    "budgetExhausted": "бюджет токенов исчерпан ({budget})",
+    "contextRequired": "опишите контекст задачи",
+    "emptyChain": "пустая цепочка моделей",
+    "endpointNotFound": "эндпоинт не найден",
+    "internal": "внутренняя ошибка",
+    "invalidJson": "некорректный JSON в теле запроса",
+    "invalidRoute": "некорректный маршрут модели",
+    "mcpConfig": "не удалось сохранить конфигурацию MCP",
+    "mcpNameRequired": "укажите имя MCP-сервера",
+    "mcpNotFound": "MCP-сервер не найден",
+    "methodNotAllowed": "метод не поддерживается",
+    "noModelForRole": "для роли {role} не настроена модель",
+    "planEmpty": "план не содержит подзадач",
+    "planFailed": "не удалось построить план",
+    "roleModelRequired": "нужно указать роль и модель",
+    "routeNotFound": "такой модели нет в цепочке этой роли",
+    "taskMoveStatus": "нельзя перевести задачу в статус «{status}»",
+    "taskNotFound": "задача не найдена",
+    "titleRequired": "укажите название задачи",
+    "unknownPipeline": "неизвестный конвейер {pipeline}",
+    "verification": "проверка не удалась"
+  },
+  "pipeline": {
+    "dev": {
+      "name": "Этапы разработки",
+      "about": "Фиксированный конвейер: анализ → дизайн → реализация → тесты → ревью → документация"
+    },
+    "free": {
+      "name": "Свободная задача",
+      "about": "Планировщик сам разбивает задачу на подзадачи и назначает роли"
+    },
+    "single": {
+      "name": "Одна задача",
+      "about": "Без декомпозиции: задача выполняется одним агентом"
+    }
+  },
+  "stage": {
+    "analyze": "Анализ",
+    "design": "Дизайн",
+    "implement": "Реализация",
+    "test": "Тесты",
+    "review": "Ревью",
+    "docs": "Документация",
+    "plan": "Планирование",
+    "generic": "Подзадача"
+  },
+  "static": {
+    "brand": "taskflow",
+    "uiNotBuilt": {
+      "title": "UI не собрана",
+      "body": "Соберите фронтенд:",
+      "api": "API доступен по {path}."
+    }
+  },
+  "task": {
+    "accepted": "задача принята",
+    "acceptedPipeline": "задача принята, конвейер: {pipeline}",
+    "acceptedPlanner": "задача принята, планировщик разложит её на подзадачи",
+    "cancelled": "отменена пользователем",
+    "cancelledParent": "отменена вместе с родителем",
+    "moved": "статус изменён вручную: {status}",
+    "retried": "повторный запуск по запросу пользователя",
+    "answered": "получен ответ человека, продолжаем",
+    "stagesDone": "все этапы завершены, собираю итог",
+    "needsHuman": "нужно вмешательство: {cause} (попыток {attempts})",
+    "retryFailed": "попытка {attempt}/{total} не удалась: {reason}",
+    "dependencyMissing": "зависимость {dependency} не найдена",
+    "stageFailed": "этап «{stage}» завершился со статусом {status}",
+    "stageNeedsHuman": "этап «{stage}» требует участия человека",
+    "stageTitle": "{stage}: {title}",
+    "stageError": "ошибка: {reason}",
+    "planReady": "план готов: {count} подзадач",
+    "planFallback": " (планировщик вернул невалидный план, взята одна подзадача)",
+    "planCreated": "план на {count} подзадач создан",
+    "executing": "исполнитель: {model} ({provider})",
+    "executionDone": "исполнитель закончил, запускаю проверку",
+    "verdictPass": "принято, оценка {score}/100",
+    "verified": "модель {model}, вердикт {score}/100",
+    "verdictRejected": "проверяющий не принял результат",
+    "reviewRejected": "проверяющий не принял результат ({score}/100): {issues}",
+    "aggregated": "конвейер завершён",
+    "aggregatedBy": "итог собран моделью {model}",
+    "aggregatedNoModel": "итог собран без модели (агрегатор недоступен)",
+    "aggregatedFallback": "конвейер завершён, итог склеен из этапов",
+    "stagesPending": "ожидание этапов: {done}/{total} готово",
+    "resumed": "продолжение: незавершённые этапы поставлены в очередь",
+    "state": {
+      "pending": "в очереди",
+      "planning": "планирование",
+      "blocked": "ожидает этапы",
+      "running": "выполняется",
+      "verifying": "проверка",
+      "retrying": "повтор",
+      "needs_human": "нужен человек",
+      "done": "готово",
+      "failed": "ошибка",
+      "cancelled": "отменено"
+    }
+  }
+}
