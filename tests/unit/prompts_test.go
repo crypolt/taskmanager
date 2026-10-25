@@ -1,6 +1,7 @@
 package unit
 
 import (
+	"strings"
 	"testing"
 
 	"taskmanager/internal/services/internals"
@@ -83,5 +84,31 @@ func TestParseVerdict(t *testing.T) {
 	}
 	if len(broken.Issues) == 0 {
 		t.Fatal("malformed verdict must carry an issue")
+	}
+}
+
+func TestExecPromptCarriesRejection(t *testing.T) {
+	t.Parallel()
+
+	prompt := internals.ExecPrompt("Docs", "write docs/api.md", "ctx", "missing file docs/api.md")
+	for _, want := range []string{"Previous attempt was rejected", "missing file docs/api.md", "Do not return the same result again"} {
+		if !strings.Contains(prompt, want) {
+			t.Fatalf("prompt misses %q:\n%s", want, prompt)
+		}
+	}
+	plain := internals.ExecPrompt("Docs", "write docs/api.md", "", "")
+	if strings.Contains(plain, "Previous attempt was rejected") {
+		t.Fatal("first attempt must not carry a rejection section")
+	}
+}
+
+func TestVerifyPromptPointsAtWorkspace(t *testing.T) {
+	t.Parallel()
+
+	prompt := internals.VerifyPrompt("Docs", "d", "done", "", "Changed files:\n?? docs/api.md")
+	for _, want := range []string{"Workspace changes", "?? docs/api.md", "workspace is ground truth", "Cite file paths"} {
+		if !strings.Contains(prompt, want) {
+			t.Fatalf("prompt misses %q:\n%s", want, prompt)
+		}
 	}
 }

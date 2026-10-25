@@ -70,7 +70,7 @@ make build  # bin/taskmanager, фронтенд упакован через go:e
 | `OPENCODE_AUTO_APPROVE` | `true` | `--auto` (иначе headless упадёт на permission-ask) |
 | `OPENCODE_PURE` | `true` | `--pure` |
 | `OPENCODE_MCP` | `false` | включать MCP-серверы в генерируемом конфиге |
-| `OPENCODE_STEPS` | `12` | лимит шагов агента |
+| `OPENCODE_STEPS` | `40` | лимит шагов агента (12 не хватает: агент умирает на записи файлов) |
 | `OPENCODE_IDLE_SEC` | `120` | watchdog: нет событий → процесс убивается |
 | `OPENCODE_CONFIG_PATH` | — | свой конфиг вместо сгенерированного |
 | `OPENAI_BASE_URL` / `OPENAI_API_KEY` | — | провайдер `openai` для маршрутов |

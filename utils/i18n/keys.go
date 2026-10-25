@@ -65,6 +65,7 @@ const (
 	ErrEmptyChain       Key = "error.emptyChain"
 	ErrBudgetExhausted  Key = "error.budgetExhausted"
 	ErrVerification     Key = "error.verification"
+	ErrRepeatedResult   Key = "error.repeatedResult"
 	ErrTaskNotFound     Key = "error.taskNotFound"
 	ErrRouteNotFound    Key = "error.routeNotFound"
 	ErrTaskMoveStatus   Key = "error.taskMoveStatus"

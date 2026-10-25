@@ -16,7 +16,7 @@ const RunnerAgent = "task-runner"
 // servers listed by the caller keeps runs fast and cheap.
 func RunnerConfig(steps int, mcpNames []string) (string, error) {
 	if steps <= 0 {
-		steps = 12
+		steps = 40
 	}
 	agent := map[string]any{
 		"description": "Headless task executor: repository tools only, bounded steps.",

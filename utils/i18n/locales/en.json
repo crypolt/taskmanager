@@ -29,6 +29,7 @@
     "noModelForRole": "no model configured for role {role}",
     "planEmpty": "the plan has no subtasks",
     "planFailed": "failed to build the plan",
+    "repeatedResult": "the model returned the same result as the previous attempt — switching to the next one",
     "roleModelRequired": "role and model are required",
     "routeNotFound": "that model is not in this role chain",
     "taskMoveStatus": "cannot move a task to status \"{status}\"",

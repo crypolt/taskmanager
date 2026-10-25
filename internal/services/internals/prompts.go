@@ -19,6 +19,7 @@ const sharedRules = `## Shared workspace rules
 - Your scope (when given) lists the files and directories you own; do not touch anything outside it.
 - Treat the shared context as ground truth: do not redo finished work and do not contradict earlier decisions.
 - If a change outside your scope is required, describe it in the result instead of making it.
+- Budget your steps: read only what the task needs, then produce the result. When the task names files, create them first and refine afterwards; an unfinished file is worse than a short one.
 - Answer with the final result only: no restating the task, no filler, no repetition of the context.
 `
 
@@ -40,8 +41,10 @@ func VerifySystem() string {
 	return `You are an independent verifier. Reply with VALID JSON only: {"pass": true|false, "score": 0-100, "issues": ["..."]}`
 }
 
-// ExecPrompt builds the executor prompt for one stage.
-func ExecPrompt(title, description, context string) string {
+// ExecPrompt builds the executor prompt for one stage. Feedback carries the
+// previous rejection verbatim: without it a retry starts blind and repeats the
+// same mistakes, which is how a task burns every attempt without converging.
+func ExecPrompt(title, description, context, feedback string) string {
 	var builder strings.Builder
 	builder.WriteString("## Task\n")
 	builder.WriteString(title)
@@ -50,6 +53,12 @@ func ExecPrompt(title, description, context string) string {
 	if strings.TrimSpace(context) != "" {
 		builder.WriteString("\n\n## Context from previous stages\n")
 		builder.WriteString(context)
+	}
+	if strings.TrimSpace(feedback) != "" {
+		builder.WriteString("\n\n## Previous attempt was rejected\n")
+		builder.WriteString(strings.TrimSpace(feedback))
+		builder.WriteString("\n\nFix every point above and inspect the workspace for what already exists. " +
+			"Do not return the same result again.")
 	}
 	builder.WriteString("\n\nReturn only the stage result, without introductions or apologies.")
 	return builder.String()
@@ -72,21 +81,29 @@ Reply with VALID JSON only, no markdown:
 {"subtasks":[{"title":"...","description":"...","role":"analyze","scope":["internal/foo"]}]}`, title, description, extra)
 }
 
-// VerifyPrompt asks the verifier for a verdict JSON.
-func VerifyPrompt(title, description, output, context string) string {
+// VerifyPrompt asks the verifier for a verdict JSON. Changes lists what the
+// executor actually touched: the files are the contract, the message is only a
+// claim, so the verifier is told to read them.
+func VerifyPrompt(title, description, output, context, changes string) string {
 	extra := ""
 	if strings.TrimSpace(context) != "" {
 		extra = "\n\n## Shared context\n" + context
 	}
+	workspace := ""
+	if strings.TrimSpace(changes) != "" {
+		workspace = "\n\n## Workspace changes\n" + changes +
+			"\n\nRead the changed files before judging: the workspace is ground truth, " +
+			"the executor message is only a claim. Cite file paths in every issue."
+	}
 	return fmt.Sprintf(`## Original task
 %s
 
-%s%s
+%s%s%s
 
 ## Executor output
 %s
 
-Assess the output against the task and the shared context, then return the verdict JSON.`, title, description, extra, output)
+Assess the output against the task, the shared context and the workspace, then return the verdict JSON.`, title, description, extra, workspace, output)
 }
 
 // ParsePlan decodes a planner response into normalized subtasks.

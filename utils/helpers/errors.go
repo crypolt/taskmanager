@@ -154,6 +154,13 @@ func ErrVerification(cause error) *AppError {
 	return WrapDetail(cause, CodeVerification, i18n.ErrVerification, nil)
 }
 
+// ErrRepeatedResult reports an attempt that returned exactly the same text as
+// the previous one. Verifying it again would only burn tokens, so the engine
+// escalates to the next model with this cause instead.
+func ErrRepeatedResult() *AppError {
+	return New(CodeConflict, i18n.ErrRepeatedResult, nil)
+}
+
 // ErrReviewRejected reports a verdict that did not pass.
 func ErrReviewRejected(score int, issues string) *AppError {
 	return New(CodeVerification, i18n.MsgTaskReviewRejected, map[string]any{"score": score, "issues": issues})

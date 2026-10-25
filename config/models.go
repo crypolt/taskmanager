@@ -29,7 +29,7 @@ type Config struct {
 		OpenCodeAuto    bool   `kenv:"OPENCODE_AUTO_APPROVE|true"`
 		OpenCodePure    bool   `kenv:"OPENCODE_PURE|true"`
 		OpenCodeMCP     bool   `kenv:"OPENCODE_MCP|false"`
-		OpenCodeSteps   int    `kenv:"OPENCODE_STEPS|12"`
+		OpenCodeSteps   int    `kenv:"OPENCODE_STEPS|40"`
 		OpenCodeIdleSec int    `kenv:"OPENCODE_IDLE_SEC|120"`
 		OpenAIBaseURL   string `kenv:"OPENAI_BASE_URL|https://api.openai.com/v1"`
 		OpenAIKey       string `kenv:"OPENAI_API_KEY|"`

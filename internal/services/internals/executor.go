@@ -39,7 +39,11 @@ func (e *Engine) execute(ctx context.Context, task *models.Task) {
 		contextText = scopeLine + "\n\n" + contextText
 	}
 	system := SystemPrompt(task.Role)
-	prompt := e.truncate(ExecPrompt(task.Title, task.Description, contextText))
+	feedback := ""
+	if task.AttemptCount > 0 {
+		feedback = strings.TrimSpace(task.Error)
+	}
+	prompt := e.truncate(ExecPrompt(task.Title, task.Description, contextText, feedback))
 	if task.HumanNote != "" {
 		prompt += "\n\n## Human clarification\n" + task.HumanNote
 	}
@@ -71,6 +75,11 @@ func (e *Engine) execute(ctx context.Context, task *models.Task) {
 		e.escalate(ctx, task, err)
 		return
 	}
+	if previous := e.previousExecutorOutput(ctx, task.ID, attempt.ID); sameOutput(previous, response.Text) {
+		e.escalate(ctx, task, helpers.ErrRepeatedResult())
+		return
+	}
+
 	e.setStatus(ctx, task, models.StatusVerifying, i18n.T(ctx, i18n.MsgTaskExecutionDone, nil))
 
 	verdict, err := e.verify(ctx, task, response.Text)
@@ -96,6 +105,7 @@ func (e *Engine) execute(ctx context.Context, task *models.Task) {
 	if issues == "" {
 		issues = i18n.T(ctx, i18n.MsgTaskVerdictRejected, nil)
 	}
+	e.remember(ctx, task, models.ContextKindNote, "Verifier feedback", issues)
 	e.escalate(ctx, task, helpers.ErrReviewRejected(verdict.Score, issues))
 }
 
@@ -114,7 +124,7 @@ func (e *Engine) verify(ctx context.Context, task *models.Task, output string) (
 	}
 
 	system := VerifySystem()
-	prompt := e.truncate(VerifyPrompt(task.Title, task.Description, output, e.sharedContext(ctx, task)))
+	prompt := e.truncate(VerifyPrompt(task.Title, task.Description, output, e.sharedContext(ctx, task), e.workspaceChanges(ctx)))
 	attempt := e.startAttempt(ctx, task, route, models.AgentVerifier, prompt)
 	callCtx, cancel := context.WithTimeout(ctx, e.cfg.ExecTimeout())
 	defer cancel()
@@ -150,4 +160,23 @@ func (e *Engine) pickRoute(ctx context.Context, role, hint string, attempt int) 
 		return models.Route{}, nil, err
 	}
 	return route, provider, nil
+}
+
+// previousExecutorOutput returns the text of the last finished executor
+// attempt, so a retry that produces the identical answer can be escalated
+// instead of re-verified.
+func (e *Engine) previousExecutorOutput(ctx context.Context, taskID, currentID string) string {
+	attempts, err := e.st.ListAttempts(ctx, taskID)
+	if err != nil {
+		return ""
+	}
+	for i := len(attempts) - 1; i >= 0; i-- {
+		if attempts[i].ID == currentID {
+			continue
+		}
+		if attempts[i].Agent == models.AgentExecutor && attempts[i].Output != "" {
+			return attempts[i].Output
+		}
+	}
+	return ""
 }
